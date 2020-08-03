@@ -1,0 +1,13 @@
+[
+  {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "",
+    "password": "",
+    "database": "nimbus",
+    "entities": [
+      "./src/api/models/entities/*.ts"
+    ]
+  }
+]
