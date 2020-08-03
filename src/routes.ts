@@ -1,7 +1,11 @@
 import Router from 'koa-router';
 
-const router = new Router();
+import { AuthController } from '@controllers/.'
 
-router.get('/', async ctx => ctx.body = { message: 'nimbus kickstart' })
+const router = new Router({
+  prefix:'/api'
+});
+
+router.post('/login', AuthController.login)
 
 export { router as Router };
