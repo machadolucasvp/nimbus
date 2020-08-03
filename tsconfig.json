@@ -10,11 +10,13 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "baseUrl": ".",
     "paths": {
-      "@repositories/*": ["./src/api/repositories/*"],
-      "@models/*": ["./src/api/models/*"],
-      "@services/*": ["./src/api/services/*"],
-      "@controllers/*": ["./src/api/controllers/*"]
-    }
+      "@repositories/*": ["src/api/repositories/*"],
+      "@models/*": ["src/api/models/*"],
+      "@services/*": ["src/api/services/*"],
+      "@controllers/*": ["src/api/controllers/*"]
+    },
+    "moduleResolution": "node"
   }
 }
