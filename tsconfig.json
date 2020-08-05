@@ -16,7 +16,8 @@
       "@models/*": ["src/api/models/*"],
       "@services/*": ["src/api/services/*"],
       "@controllers/*": ["src/api/controllers/*"],
-      "@infra/*": ["src/api/infra/*"]
+      "@infra/*": ["src/api/infra/*"],
+      "@broker/*": ["src/broker/*"]
     },
     "moduleResolution": "node"
   }
