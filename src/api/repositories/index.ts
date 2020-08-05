@@ -1,6 +1,6 @@
 import { UserRepository } from './user/user.repository';
-import { BaseRepository } from './base.repository';
+import { IUserRepository} from './user/user-interface.repository';
 
 const userRepository = new UserRepository();
 
-export { userRepository as UserRepository }
+export { userRepository as UserRepository, IUserRepository }

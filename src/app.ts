@@ -3,6 +3,8 @@ import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import { createConnection } from 'typeorm';
 
+import { SERVER_PORT } from './config';
+
 import { Router } from './routes';
 
 (async function bootstrap() {
@@ -18,4 +20,5 @@ import { Router } from './routes';
   }
 
   app.use(Router.routes())
+  app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`))
 })()
