@@ -1,9 +1,9 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
-import { createConnection } from 'typeorm';
-
 import { SERVER_PORT } from './config';
+
+import "@infra/typeorm"
 
 import { Router } from './routes';
 
@@ -12,12 +12,6 @@ import { Router } from './routes';
 
   app.use(bodyParser())
   app.use(logger())
-
-  try {
-    await createConnection();
-  } catch (err) {
-    console.log({ error: { ...err } })
-  }
 
   app.use(Router.routes())
   app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`))
