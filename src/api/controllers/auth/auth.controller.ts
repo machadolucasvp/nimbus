@@ -1,5 +1,5 @@
 import { IAuthService } from "@services/.";
-import { Context } from "koa";
+import { RouterContext } from "koa-router";
 
 export class AuthController {
   authService: IAuthService;
@@ -8,11 +8,11 @@ export class AuthController {
     this.authService = authService;
   }
 
-  async login(ctx: Context) {
+  async login(ctx: RouterContext) {
     const { email, password } = ctx.request.body;
 
     try {
-      ctx.body = this.authService.login(email, password)
+      ctx.body = await this.authService.login(email, password)
       ctx.status = 200
 
     } catch (err) {
