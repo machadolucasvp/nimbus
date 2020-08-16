@@ -1,8 +1,8 @@
-import Rabbit from './rabbitmq';
+import RabbitConnection, { Rabbit } from './rabbitmq';
 
 import { RABBIT_PREFETCH, RABBIT_QUEUES } from '../config';
 
-const rabbit = Rabbit();
+const rabbit = RabbitConnection();
 
 (async function bootRabbitMQ() {
   try {
@@ -10,8 +10,11 @@ const rabbit = Rabbit();
 
     await rabbit.createChannel(RABBIT_PREFETCH);
 
-    await rabbit.createQueues(RABBIT_QUEUES)
+    await rabbit.createQueues(RABBIT_QUEUES);
   } catch (err) {
     console.log({ error: { ...err } })
   }
 })()
+
+export default RabbitConnection;
+export { Rabbit }

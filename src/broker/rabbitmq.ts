@@ -32,6 +32,10 @@ class Rabbit {
     return this.#channel?.sendToQueue(queue, Buffer.from(JSON.stringify(payload)), options);
   }
 
+  async consume(queue: any, onMessage: any) {
+    return this.#channel?.consume(queue, onMessage)
+  }
+
   static getInstance() {
     if (this.instance) return this.instance;
 
