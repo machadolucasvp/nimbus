@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryColumn, UpdateDateColumn, CreateDateColumn } from "typeorm";
-import { IsEmail, Length, IsBoolean } from 'class-validator';
+import { IsEmail, Length, IsBoolean, MinLength } from 'class-validator';
 
 import { Role } from '../enums'
 
@@ -23,6 +23,10 @@ export class User {
   @IsEmail()
   @Length(10, 64)
   email!: string;
+
+  @Column()
+  @MinLength(6)
+  password!: string;
 
   @Column()
   @Length(11, 14)

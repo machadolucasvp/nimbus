@@ -7,6 +7,8 @@ const authController = new AuthController(AuthService);
 const userController = new UserController(UserService);
 
 export {
-  authController as AuthController,
-  userController as UserController
+  authController,
+  AuthController,
+  userController,
+  UserController
 }

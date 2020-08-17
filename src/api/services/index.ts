@@ -3,14 +3,14 @@ import { IAuthService } from './auth/auth-interface.service';
 import { IUserService } from './user/user-interface.service';
 import { UserService } from './user/user.service';
 
-import { UserRepository } from '../repositories';
+import { userRepository } from '../repositories';
 
-const authService = new AuthService(UserRepository)
-const userService = new UserService(UserRepository);
+const authService = new AuthService(userRepository)
+const userService = new UserService(userRepository);
 
 export {
-  authService as AuthService,
-  userService as UserService,
+  authService,
   IAuthService,
+  userService,
   IUserService
 }
