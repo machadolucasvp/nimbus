@@ -6,9 +6,6 @@
   "author": "Lucas Machado <machadolucasvp@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/amqplib": "^0.5.13"
-  },
-  "dependencies": {
-    "amqplib": "^0.6.0"
+    "typescript": "^3.9.7"
   }
 }

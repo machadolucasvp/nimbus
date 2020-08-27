@@ -13,4 +13,4 @@ export function initWorkersPool(callback?: Function) {
   } catch (err) {
     console.log({ error: { ...err } })
   }
-}((amount) => console.log(`Running ${amount} workers`))
+}((amount: number) => console.log(`Running ${amount} workers`))
