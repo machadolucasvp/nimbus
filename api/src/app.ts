@@ -5,7 +5,7 @@ import { SERVER_PORT } from './config';
 import { initWorkersPool } from '../../worker/src';
 import "api/infra/typeorm"
 
-import { Router } from '../routes';
+import { Router } from './routes';
 
 (async function bootstrap() {
   const app = new Koa();
