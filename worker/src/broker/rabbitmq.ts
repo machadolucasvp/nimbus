@@ -1,5 +1,5 @@
 import amqp, { Channel, Connection } from 'amqplib';
-import { AMQP_URI } from '../../../api/src/config';
+import { AMQP_URI } from '../config';
 
 class Rabbit {
   static instance: Rabbit;

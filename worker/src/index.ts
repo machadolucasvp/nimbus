@@ -4,7 +4,7 @@ import { WORKERS_AMOUNT } from './config';
 
 const composeIfExists = (value: any, func?: Function) => func ? func(value) : func;
 
-export function initWorkersPool(callback?: Function) {
+(function initWorkersPool(callback?: Function) {
   try {
     const workerPool = new WorkerPool(WORKERS_AMOUNT);
 
@@ -13,4 +13,4 @@ export function initWorkersPool(callback?: Function) {
   } catch (err) {
     console.log({ error: { ...err } })
   }
-}((amount: number) => console.log(`Running ${amount} workers`))
+})((amount: number) => console.log(`Running ${amount} workers`))
