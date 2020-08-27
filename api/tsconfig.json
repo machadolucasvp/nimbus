@@ -12,11 +12,11 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "@repositories/*": ["src/api/repositories/*"],
-      "@models/*": ["src/api/models/*"],
-      "@services/*": ["src/api/services/*"],
-      "@controllers/*": ["src/api/controllers/*"],
-      "@infra/*": ["src/api/infra/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@infra/*": ["src/infra/*"],
       "@broker/*": ["src/broker/*"]
     },
     "moduleResolution": "node"

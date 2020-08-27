@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 
-import { authController } from '@controllers/.'
-import { userController } from '@controllers/.'
+import { authController } from './src/controllers'
+import { userController } from './src/controllers'
 
 const router = new Router({
   prefix: '/api'

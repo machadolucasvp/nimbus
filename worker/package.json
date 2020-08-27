@@ -1,0 +1,13 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "Lucas Machado",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.0"
+  },
+  "dependencies": {
+    "nodemailer": "^6.4.11"
+  }
+}

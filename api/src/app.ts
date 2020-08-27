@@ -2,10 +2,10 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import { SERVER_PORT } from './config';
-import { initWorkersPool } from './workers';
-import "@infra/typeorm"
+import { initWorkersPool } from '../../worker/src';
+import "api/infra/typeorm"
 
-import { Router } from './routes';
+import { Router } from '../routes';
 
 (async function bootstrap() {
   const app = new Koa();

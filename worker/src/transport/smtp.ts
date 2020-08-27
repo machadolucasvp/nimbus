@@ -1,6 +1,5 @@
 import { SendMailOptions ,Transporter, createTransport } from 'nodemailer';
-
-import { MAIL_USER, MAIL_PASS } from '../../config';
+import { MAIL_USER, MAIL_PASS } from '../../../api/src/config';
 
 export class SMTPTransport {
   transport: Transporter;

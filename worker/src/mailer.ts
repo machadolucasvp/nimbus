@@ -1,5 +1,5 @@
 import SMTPTransport from './transport/smtp';
-import RabbitConnection, { Rabbit } from '../broker';
+import RabbitConnection, { Rabbit } from './broker';
 
 export class Mailer {
   queue: Rabbit

@@ -1,5 +1,4 @@
 import amqp, { Channel, Connection } from 'amqplib';
-
 import { AMQP_URI } from '../config';
 
 class Rabbit {

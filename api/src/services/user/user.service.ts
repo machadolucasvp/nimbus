@@ -1,6 +1,6 @@
-import { IUserRepository } from "../../repositories/user/user-interface.repository";
+import { IUserRepository } from "../../../repositories/user/user-interface.repository";
 import { IUserService } from "./user-interface.service";
-import { User } from "@models/entities";
+import { User } from "../../models/entities";
 
 export class UserService implements IUserService {
   userRepository: IUserRepository;
