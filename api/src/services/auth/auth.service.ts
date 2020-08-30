@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import { sign } from 'jsonwebtoken';
 
-import { IUserRepository } from "../../../repositories/user/user-interface.repository";
+import { IUserRepository } from "@repositories/user/user-interface.repository";
 import { JWT_SECRET, JWT_EXPIRES_IN } from "../../config";
 import { IAuthService } from './auth-interface.service';
 

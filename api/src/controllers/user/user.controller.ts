@@ -1,6 +1,6 @@
 
 import { RouterContext } from "koa-router";
-import { IUserService } from "api/services";
+import { IUserService } from "@services/.";
 
 export class UserController {
   userService: IUserService;

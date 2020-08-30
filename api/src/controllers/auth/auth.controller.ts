@@ -1,5 +1,5 @@
-import { IAuthService } from "api/services";
 import { RouterContext } from "koa-router";
+import { IAuthService } from "@services/.";
 
 export class AuthController {
   authService: IAuthService;
