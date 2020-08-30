@@ -5,13 +5,17 @@
   "author": "Lucas Machado",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app",
+    "clean": "rm -rf ./dist/* "
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.0",
     "@types/amqplib": "^0.5.13",
     "ts-node-dev": "^1.0.0-pre.56",
-    "tsconfig-paths": "^3.9.0"
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.0.2"
   },
   "dependencies": {
     "nodemailer": "^6.4.11",
