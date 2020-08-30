@@ -1,11 +1,12 @@
 import Router from 'koa-router';
 
-import { authController } from './controllers'
-import { userController } from './controllers'
+import { statusController, userController, authController } from './controllers'
 
 const router = new Router({
   prefix: '/api'
 });
+
+router.get('/status', statusController.status)
 
 router.post('/login', authController.login)
 router.post('/user', userController.post)
