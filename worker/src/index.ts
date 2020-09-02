@@ -11,6 +11,7 @@ const composeIfExists = (value: any, func?: Function) => func ? func(value) : fu
     const workerPool = new WorkerPool(WORKERS_AMOUNT);
 
     workerPool.init();
+    workerPool.setAllWorkersActive();
 
     composeIfExists(workerPool.size, callback);
   } catch (err) {

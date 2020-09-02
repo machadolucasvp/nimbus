@@ -1,11 +1,13 @@
-import { SendMailOptions ,Transporter, createTransport } from 'nodemailer';
+import { SendMailOptions, Transporter, createTransport } from 'nodemailer';
 import { MAIL_USER, MAIL_PASS } from '../config';
+import { MailerTransport } from '../interfaces/mailer-transport';
+import SMTPPool from 'nodemailer/lib/smtp-pool';
 
-export class SMTPTransport {
+export class SMTPTransport implements MailerTransport {
   transport: Transporter;
 
-  constructor() {
-    this.transport = createTransport({
+  constructor(options?: SMTPPool.Options) {
+    this.transport = createTransport(options || {
       service: 'gmail',
       pool: true,
       secure: true,
@@ -18,9 +20,9 @@ export class SMTPTransport {
 
   async send(mail: SendMailOptions) {
     return this.transport.sendMail({
-      from: MAIL_USER,
+      from: mail.from ?? MAIL_USER,
       ...mail
-    })  
+    })
   }
 }
 

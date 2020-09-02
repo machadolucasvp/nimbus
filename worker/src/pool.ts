@@ -1,8 +1,8 @@
-import { Mailer } from "./mailer";
-import { MailerWorker } from "./interfaces/mailer-worker";
-
+import { MailerWorker } from "./mailer-worker";
+import { IPoolWorker } from "./interfaces/pool-worker";
+import { PoolWorker } from './pool-worker';
 export class WorkerPool {
-  pool: MailerWorker[] = [];
+  pool: IPoolWorker[] = [];
   size: number;
 
   constructor(size: number) {
@@ -10,10 +10,15 @@ export class WorkerPool {
   }
 
   init() {
-    Array(this.size || 1).fill(undefined)
-      .map((_, index) => ({
-        worker_id: index,
-        worker: new Mailer()
+    this.pool = Array(this.size || 1).fill(undefined)
+      .map((_, index) => PoolWorker.build({
+        id: index,
+        active: false,
+        instance: new MailerWorker()
       }))
+  }
+
+  setAllWorkersActive() {
+    this.pool.forEach(poolWorker => poolWorker.work('mailer'))
   }
 }

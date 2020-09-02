@@ -1,14 +1,15 @@
 import SMTPTransport from './transport/smtp';
 import RabbitConnection, { Rabbit } from './broker';
+import { Worker } from './interfaces/worker';
 
-export class Mailer {
+export class MailerWorker implements Worker {
   queue: Rabbit
 
-  constructor() {
-    this.queue = RabbitConnection();
+  constructor(queueConn: any = RabbitConnection) {
+    this.queue = queueConn();
   }
 
-  async consume(queue: string) {
+  async work(queue: string) {
     return this.queue.consume(queue, this.sendMail);
   }
 

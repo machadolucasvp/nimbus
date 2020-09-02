@@ -1,4 +1,4 @@
-export const AMQP_URI = 'amqp://172.17.0.2:5672/'
+export const AMQP_URI = 'amqp://172.17.0.3:5672'
 export const RABBIT_PREFETCH = 1
 export const RABBIT_QUEUES = ['mailer']
 
