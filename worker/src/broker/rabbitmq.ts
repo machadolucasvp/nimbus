@@ -19,7 +19,7 @@ class Rabbit {
 
   async createChannel(prefetchOptions = 1) {
     this.#channel = await this.#connection?.createChannel();
-
+    
     return this.#channel?.prefetch(prefetchOptions);
   }
 
@@ -36,10 +36,9 @@ class Rabbit {
   }
 
   static getInstance() {
-    if (this.instance) return this.instance;
-
-    this.instance = new Rabbit();
-    return this.instance;
+    if (Rabbit.instance) return Rabbit.instance;
+    Rabbit.instance = new Rabbit();
+    return Rabbit.instance;
   }
 }
 
