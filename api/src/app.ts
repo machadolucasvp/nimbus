@@ -2,7 +2,7 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import { SERVER_PORT } from './config';
-import "api/infra/typeorm"
+import "./infra/typeorm"
 
 import { Router } from './routes';
 
