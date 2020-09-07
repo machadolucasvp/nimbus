@@ -19,7 +19,6 @@ class Rabbit {
 
   async createChannel(prefetchOptions = 1) {
     this.#channel = await this.#connection?.createChannel();
-    
     return this.#channel?.prefetch(prefetchOptions);
   }
 

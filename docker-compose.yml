@@ -9,6 +9,14 @@ services:
       - "8001:8001"
     volumes: 
       - ./api/dist:/opt/app/dist
+    environment:
+      - NODE_ENV=development
+      - SERVER_PORT=8001
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN="24 hours"
+      - AMQP_URI=${AMQP_URI}
+      - RABBIT_PREFETCH=1
+      - RABBIT_QUEUES="mailer"
       
   worker:
     container_name: nimbus-worker
@@ -18,3 +26,11 @@ services:
       - "5672:5672"
     volumes:
       - ./worker/dist:/opt/app/dist
+    environment:
+      - NODE_ENV=development
+      - WORKERS_AMOUNT=${WORKERS_AMOUNT}
+      - MAIL_SERVICE=${MAIL_SERVICE}
+      - MAIL_USER=${MAIL_USER}
+      - MAIL_PASS=${MAIL_PASS}
+      - RABBIT_PREFETCH=1
+      - RABBIT_QUEUES="mailer"
