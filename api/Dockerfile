@@ -9,7 +9,7 @@ RUN npm run clean && \
 FROM node:12-alpine
 WORKDIR /opt/app
 COPY --from=builder /opt/app/dist ./dist
-COPY package*.json ormconfig.json ./
+COPY package*.json ./
 RUN npm install --silent --production
 EXPOSE 8001
 CMD ["npm", "start"]

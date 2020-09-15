@@ -1,27 +1,53 @@
 version: '3'
 
+networks:
+  nimbus:
 services: 
+  pg: 
+    container_name: nimbus-pg
+    image: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes: 
+      - ./.docker/pgdata:/var/lib/postgresql/data
+    networks: 
+      - nimbus
+    ports:
+      - ${POSTGRES_PORT}:5432
   api:
     container_name: nimbus-api
     build:
       context: ./api
+    networks:
+      - nimbus
     ports: 
       - "8001:8001"
     volumes: 
-      - ./api/dist:/opt/app/dist
+      - ./api/dist:/dist
     environment:
       - NODE_ENV=development
       - SERVER_PORT=8001
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRES_IN="24 hours"
+      - TYPEORM_CONNECTION=postgres
+      - TYPEORM_HOST=nimbus-pg
+      - TYPEORM_USERNAME=${POSTGRES_USER}
+      - TYPEORM_PASSWORD=${POSTGRES_PASS}
+      - TYPEORM_DATABASE=${POSTGRES_DB}
+      - TYPEORM_ENTITIES=${TYPEORM_ENTITIES}
       - AMQP_URI=${AMQP_URI}
       - RABBIT_PREFETCH=1
       - RABBIT_QUEUES="mailer"
-      
+    depends_on:
+      - pg
   worker:
     container_name: nimbus-worker
     build:
       context: ./worker
+    networks:
+      - nimbus
     ports: 
       - "5672:5672"
     volumes:

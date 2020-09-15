@@ -11,7 +11,6 @@ import { Router } from './routes';
 
   app.use(bodyParser())
   app.use(logger())
-
   app.use(Router.routes())
   app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`))
 })()
