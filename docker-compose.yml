@@ -3,6 +3,17 @@ version: '3'
 networks:
   nimbus:
 services: 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: nimbus-rabbit
+    volumes:
+        - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+        - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+      - nimbus
   pg: 
     container_name: nimbus-pg
     image: postgres
@@ -37,11 +48,14 @@ services:
       - TYPEORM_PASSWORD=${POSTGRES_PASS}
       - TYPEORM_DATABASE=${POSTGRES_DB}
       - TYPEORM_ENTITIES=${TYPEORM_ENTITIES}
+      - AMQP_HOST=nimbus-rabbit
+      - AMQP_PORT=15672
       - AMQP_URI=${AMQP_URI}
       - RABBIT_PREFETCH=1
       - RABBIT_QUEUES="mailer"
     depends_on:
       - pg
+      - rabbitmq
   worker:
     container_name: nimbus-worker
     build:
@@ -49,7 +63,7 @@ services:
     networks:
       - nimbus
     ports: 
-      - "5672:5672"
+      - "8002:8002"
     volumes:
       - ./worker/dist:/opt/app/dist
     environment:
@@ -58,5 +72,10 @@ services:
       - MAIL_SERVICE=${MAIL_SERVICE}
       - MAIL_USER=${MAIL_USER}
       - MAIL_PASS=${MAIL_PASS}
+      - AMQP_HOST=nimbus-rabbit
+      - AMQP_PORT=15672
+      - AMQP_URI=${AMQP_URI}
       - RABBIT_PREFETCH=1
       - RABBIT_QUEUES="mailer"
+    depends_on: 
+      - rabbitmq
